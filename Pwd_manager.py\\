@@ -1,0 +1,25 @@
+
+print("Welcome to password manager")
+def view():
+    with open("password.txt","r")as f:
+        for line in f.readlines():
+            line=line.rstrip()
+            usr,passs=line.split("-")
+            print(f"name={usr},password={passs}")
+def add():
+    name=input("Enter your uname? ")
+    password=input("Enter your password: ")
+    with open ("password.txt","a")as f:
+        f.write(f"{name}-{password}\n")
+
+
+while True:
+    user=input("Would you like to add a new password or view existing ones(view,add,quite)").lower()
+    if user=="quit":
+        break
+    elif user=="view":
+        view()
+    elif user=="add":
+        add()
+    else:
+        print("Invalid Input!!")
